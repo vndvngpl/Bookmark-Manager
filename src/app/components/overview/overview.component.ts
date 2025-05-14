@@ -112,8 +112,9 @@ export class OverviewComponent implements AfterViewInit {
   addBookmarks(): void {
     this.loadBookmarks(); // Reload bookmarks to ensure the latest data is displayed
     if (this.bookmarkForm.valid) {
+      const lastId = this.bookmarks[this.bookmarks.length - 1]?.id || 0; // Get the last ID or set to 0 if no bookmarks exist
       const newBookmark = {
-        id: this.bookmarks[this.bookmarks?.length - 1].id + 1, //set ID as latest value's ID + 1
+        id: lastId + 1, // Increment the ID for the new bookmark
         url: this.bookmarkForm.controls['urlFormControl'].value,
         category: this.bookmarkForm.controls['categoryFormControl'].value,
         createdOn: new Date().toISOString(),
