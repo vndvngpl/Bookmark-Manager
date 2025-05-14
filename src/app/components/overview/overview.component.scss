@@ -1,0 +1,61 @@
+.search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem; /* Spacing between elements */
+  padding: 1rem 2rem; /* Reduced padding for a sleeker look */
+  border-radius: 12px; /* Subtle rounded corners */
+  background-color: #ffffff; /* Clean white background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin: 1.5rem auto; /* Add spacing around the search container */
+  width: 100%;
+  max-width: 800px; /* Limit the width for better responsiveness */
+
+  .input {
+    flex: 1; /* Makes the input take up available space */
+    ::ng-deep .mat-mdc-form-field {
+      width: 100%; /* Full width for better responsiveness */
+      margin: 0; /* Remove default margin */
+    }
+
+    ::ng-deep .mat-mdc-form-field-wrapper {
+      padding: 0.5rem 0; /* Adjust padding for a cleaner look */
+    }
+  }
+
+  .actionButton {
+    margin-bottom: 1rem; /* Add spacing above the button */
+
+    button {
+      padding: 0.2rem 0.8rem 0.2rem 0.6rem; /* Smaller padding for a sleeker button */
+      font-size: 0.9rem; /* Adjust font size */
+      font-weight: 500;
+      border-radius: 8px; /* Rounded corners */
+      background-color: #2196f3; /* Primary blue color */
+      color: #ffffff;
+      border: none;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+
+      &:hover {
+        background-color: #1976d2; /* Slightly darker blue on hover */
+        transform: translateY(-2px); /* Lift effect */
+      }
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem; /* Space between icon and text */
+      }
+    }
+  }
+}
+.table {
+  padding: 1rem 2rem;
+  .link {
+    color: #0c75cb;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

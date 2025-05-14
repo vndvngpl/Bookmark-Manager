@@ -1,0 +1,58 @@
+<!-- Thank You Container -->
+<div class="thank-you-container mat-elevation-z4 p-4">
+  <!-- Material Card -->
+  <mat-card>
+    <!-- Card Header -->
+    <mat-card-header>
+      <mat-card-title>
+        <!-- Thank You Message -->
+        <h1 class="text-success text-center">Thank You!</h1>
+      </mat-card-title>
+    </mat-card-header>
+
+    <!-- Card Content -->
+    <mat-card-content>
+      <!-- Success Message -->
+      <p class="text-center">Your bookmark has been saved successfully.</p>
+
+      <!-- Bookmark Details Section -->
+      <!-- Check if bookmarkDetails exists -->
+      @if(bookmarkDetails){
+      <div class="bookmark-details mt-4">
+        <h3 class="text-primary">Bookmark Details:</h3>
+
+        <!-- Display the URL -->
+        <p>
+          <strong>URL:</strong>
+          <!-- Link to the saved bookmark -->
+          <!-- Opens the URL in a new tab -->
+          <a [href]="bookmarkDetails?.url" target="_blank" class="text-info">
+            {{ bookmarkDetails?.url }}
+          </a>
+        </p>
+
+        <!-- Display the Category -->
+        <p><strong>Category:</strong> {{ bookmarkDetails?.category }}</p>
+
+        <!-- Display the Created On Date -->
+        <p>
+          <strong>Created On:</strong>
+          {{ bookmarkDetails?.createdOn | date : "medium" }}
+        </p>
+      </div>
+      }
+    </mat-card-content>
+
+    <!-- Card Actions -->
+    <mat-card-actions class="d-flex justify-content-center mt-4">
+      <!-- Go Back Button -->
+      <!-- Navigates back to the previous page -->
+      <button mat-fab extended (click)="navigateBack()">
+        <span>
+          <mat-icon>arrow_back</mat-icon>
+          Go Back
+        </span>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

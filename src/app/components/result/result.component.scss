@@ -1,0 +1,51 @@
+.thank-you-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  text-align: center;
+
+  mat-card {
+    border-radius: 12px;
+    padding: 1rem;
+    background-color: #f9f9f9;
+
+    h1 {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin: 0.5rem 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: #0c75cb !important; /* Ensure link color is consistent */
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    button {
+      padding: 1.2rem 1.8rem 1.2rem 1.6rem; /* Smaller padding for a sleeker button */
+      font-size: 0.9rem; /* Adjust font size */
+      font-weight: 500;
+      border-radius: 8px; /* Rounded corners */
+      background-color: #f32121e7; /* Primary color */
+      color: #ffffff;
+      border: none;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+
+      &:hover {
+        background-color: #d24a19e0; /* Slightly darker on hover */
+        transform: translateY(-2px); /* Lift effect */
+      }
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem; /* Space between icon and text */
+      }
+    }
+  }
+}

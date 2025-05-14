@@ -1,0 +1,26 @@
+/* Styling Variables */
+/* Primary color used for footer links or highlights */
+$primary-color: #1a5ea1;
+/* Default text color for the footer */
+$text-color: #000000;
+/* Font family used throughout the footer */
+$primary-font: "Quicksand, sans-serif";
+
+/* Footer Styling */
+/* Main footer container */
+.footer {
+  color: $text-color; /* Set the text color for the footer */
+  padding: 0.5rem; /* Add padding around the footer content */
+  text-align: center; /* Center-align the text and content */
+  bottom: 0; /* Ensure the footer stays at the bottom */
+  width: 100%; /* Make the footer span the full width of the page */
+  font-family: $primary-font; /* Apply the primary font to the footer */
+  font-optical-sizing: auto; /* Enable optical sizing for better text rendering */
+  font-style: normal; /* Set the font style to normal */
+
+  /* Footer Content Styling */
+  .footer-content {
+    max-width: 1200px; /* Limit the maximum width of the footer content */
+    margin: auto; /* Center the footer content horizontally */
+  }
+}

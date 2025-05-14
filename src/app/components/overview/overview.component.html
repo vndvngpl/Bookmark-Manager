@@ -1,0 +1,154 @@
+<!-- Parent Container -->
+<div class="parent">
+  <!-- Search Form -->
+  <!-- Form group bound to `bookmarkForm` -->
+  <div [formGroup]="bookmarkForm" class="search">
+    <!-- Input Field for URL -->
+    <div class="input">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <!-- Input field for entering the URL -->
+        <input
+          type="url"
+          matInput
+          formControlName="urlFormControl"
+          placeholder="Ex. https://example.com/"
+        />
+        <!-- Error Message: Invalid URL -->
+        <!-- Displays an error message if the URL format is invalid -->
+        @if (bookmarkForm.controls['urlFormControl'].hasError('invalidUrl') &&
+        !bookmarkForm.controls['urlFormControl'].hasError('required')) {
+        <mat-error>Please enter a valid URL</mat-error>
+        }
+        <!-- Error Message: Required Field -->
+        <!-- Displays an error message if the URL field is empty -->
+        @if (bookmarkForm.controls['urlFormControl'].hasError('required')) {
+        <mat-error>URL is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <!-- Category Selection -->
+    <div class="categories">
+      <mat-form-field>
+        <mat-label>Category</mat-label>
+        <!-- Dropdown for selecting a category -->
+        <mat-select formControlName="categoryFormControl">
+          <!-- Loop through the categories array and display each category as an option -->
+          @for (item of categories; track $index) {
+          <mat-option [value]="item">{{ item }}</mat-option>
+          }
+        </mat-select>
+        <!-- Error Message: Required Field -->
+        <!-- Displays an error message if no category is selected -->
+        @if (bookmarkForm.controls['categoryFormControl'].hasError('required'))
+        {
+        <mat-error>Category is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <!-- Action Button -->
+    <div class="actionButton">
+      <!-- Save Button -->
+      <!-- Disabled if the form is invalid -->
+      <!-- Calls the addBookmarks() method when clicked -->
+      <button mat-fab extended [disabled]="isDisabled" (click)="addBookmarks()">
+        <span>
+          <mat-icon>bookmark_border</mat-icon>
+          SAVE
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Table Section -->
+  <div class="table">
+    <div class="mat-elevation-z8">
+      <!-- Material Table -->
+      <table mat-table [dataSource]="dataSource" matSort>
+        <!-- URL Column -->
+        <ng-container matColumnDef="url">
+          <!-- Table Header for URL Column -->
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by URL"
+          >
+            URL
+          </th>
+          <!-- Table Cell for URL Column -->
+          <td class="link" mat-cell *matCellDef="let element">
+            {{ element.url }}
+          </td>
+        </ng-container>
+
+        <!-- Category Column -->
+        <ng-container matColumnDef="category">
+          <!-- Table Header for Category Column -->
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by Category"
+          >
+            Category
+          </th>
+          <!-- Table Cell for Category Column -->
+          <td mat-cell *matCellDef="let element">{{ element.category }}</td>
+        </ng-container>
+
+        <!-- Created On Column -->
+        <ng-container matColumnDef="createdOn">
+          <!-- Table Header for Created On Column -->
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by Created Date"
+          >
+            Created On
+          </th>
+          <!-- Table Cell for Created On Column -->
+          <td mat-cell *matCellDef="let element">
+            {{ element.createdOn | date : "medium" }}
+          </td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <!-- Table Header for Actions Column -->
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <!-- Table Cell for Actions Column -->
+          <td mat-cell *matCellDef="let element">
+            <!-- Open Link Button -->
+            <!-- Calls the openLink() method with the element as an argument -->
+            <button mat-icon-button color="warn" (click)="openLink(element)">
+              <mat-icon>launch</mat-icon>
+            </button>
+            <!-- Delete Bookmark Button -->
+            <!-- Calls the deleteBookmark() method with the element as an argument -->
+            <button
+              mat-icon-button
+              color="warn"
+              (click)="deleteBookmark(element)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <!-- Table Header Row -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <!-- Table Data Row -->
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <!-- Paginator -->
+      <!-- Adds pagination to the table -->
+      <mat-paginator [pageSizeOptions]="[20]" showFirstLastButtons>
+      </mat-paginator>
+    </div>
+  </div>
+</div>
