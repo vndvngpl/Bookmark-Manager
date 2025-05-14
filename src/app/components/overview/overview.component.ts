@@ -110,8 +110,10 @@ export class OverviewComponent implements AfterViewInit {
    * Displays a success or error message using the snackbar.
    */
   addBookmarks(): void {
+    this.loadBookmarks(); // Reload bookmarks to ensure the latest data is displayed
     if (this.bookmarkForm.valid) {
       const newBookmark = {
+        id: this.bookmarks.length + 1, //set ID as latest value's ID + 1
         url: this.bookmarkForm.controls['urlFormControl'].value,
         category: this.bookmarkForm.controls['categoryFormControl'].value,
         createdOn: new Date().toISOString(),
