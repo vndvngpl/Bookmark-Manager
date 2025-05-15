@@ -12,6 +12,14 @@
 
 ---
 
+**Limitations**
+
+It is hard to validate the URL that if it exist or not. The technical way to do it is by sending an HTTP HEAD request to the URL and check the progress of the request and validate the response code. But now a days most of the servers disable the cross platform API calls and browsers restricts them by CORS Error. 
+So validating the URLs existance is a limitation for this application. There is a way to do it through third party packages which requires purchasing license and using their the API_KEY.
+or the easier way is to do it through Backend Application.
+
+---
+
 # Usage
 
 **Adding a Bookmark**
@@ -72,7 +80,7 @@ BookmarkManager/
 Follow these steps to set up the project locally:
 
 1. **Clone the Repository**:
-   git clone https://github.com/your-username/bookmark-manager.git
+   git clone https://github.com/vndvngpl/bookmark-manager.git
    cd bookmark-manager
 
 2. **Install Dependencies**:
